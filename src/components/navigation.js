@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import { AnimatePresence, motion } from "framer-motion";
 import { Container, FlexBox } from "../styles/globalStyles";
-
+import { Instagram, Facebook, Vimeo } from "../assets/svg/social-icons";
+import { FooterContent, FooterSocial } from "../styles/footerStyles";
 import {
   Nav,
   NavHeader,
@@ -132,7 +133,39 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
                   ))}
                 </ul>
               </NavList>
-              <NavFooter></NavFooter>
+              <NavFooter>
+                <FlexBox spaceBetween>
+                  <FooterContent>
+                    <p>info@furrow.studio</p>
+                  </FooterContent>
+                  <FooterContent wider>
+                    <p>902.315.1279</p>
+                  </FooterContent>
+                  <FooterSocial>
+                    <a
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={onCursor}
+                      href="/"
+                    >
+                      <Instagram />
+                    </a>
+                    <a
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={onCursor}
+                      href="/"
+                    >
+                      <Facebook />
+                    </a>
+                    <a
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={onCursor}
+                      href="/"
+                    >
+                      <Vimeo />
+                    </a>
+                  </FooterSocial>
+                </FlexBox>
+              </NavFooter>
               <NavVideos>
                 <motion.div
                   animate={{ width: revealVideo.show ? 0 : "100%" }}

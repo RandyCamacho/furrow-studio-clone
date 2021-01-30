@@ -10,7 +10,7 @@ import HomeFeature from "../components/homepage/HomeFeature";
 import HomeAbout from "../components/homepage/HomeAbout";
 
 const IndexPage = (props) => {
-  const { currentTheme, cursorStyle } = useGlobalStateContext();
+  const { cursorStyle } = useGlobalStateContext();
   const dispatch = useGlobalDispatchContext();
 
   const onCursor = (cursorType) => {

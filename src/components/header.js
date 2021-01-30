@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "gatsby";
 
 import { HeaderNav, Logo, Menu } from "../styles/headerStyles";
@@ -9,9 +9,24 @@ import {
   useGlobalDispatchContext,
 } from "../context/globalContext";
 
-const Header = ({ onCursor, toggleMenu, setToggleMenu }) => {
+import useElementPosition from "../hooks/useElementPosition";
+
+const Header = ({
+  onCursor,
+  toggleMenu,
+  setToggleMenu,
+  hamburgerPosition,
+  setHamburgerPosition,
+}) => {
   const dispatch = useGlobalDispatchContext();
   const { currentTheme } = useGlobalStateContext();
+  const hamburger = useRef(null);
+  const position = useElementPosition(hamburger);
+
+  const menuHover = () => {
+    onCursor("locked");
+    setHamburgerPosition({ x: position.x, y: position.y + 72 });
+  };
 
   const toggleTheme = () => {
     if (currentTheme === "dark") {
@@ -47,9 +62,12 @@ const Header = ({ onCursor, toggleMenu, setToggleMenu }) => {
             <Link to="/">W</Link>
           </Logo>
           <Menu
+            ref={hamburger}
             onClick={() => {
               setToggleMenu(!toggleMenu);
             }}
+            onMouseEnter={menuHover}
+            onMouseLeave={onCursor}
           >
             <button>
               <span></span>

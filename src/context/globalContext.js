@@ -30,7 +30,7 @@ export const GlobalProvider = ({ children }) => {
         ? "dark"
         : window.localStorage.getItem("theme"),
     cursorType: false,
-    cursorStyle: ["pointer", "hovered"],
+    cursorStyle: ["pointer", "hovered", "locked"],
   });
 
   return (
